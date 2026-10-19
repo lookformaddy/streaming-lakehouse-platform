@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "streaming-lakehouse-platform"
+version = "0.1.0"
+description = "Kafka-style streaming ingestion -> data quality gate -> event-time window processing -> lakehouse tables with a transaction log, operated against latency and data-quality SLIs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Manas Mohanty" }]
+keywords = ["data-engineering", "streaming", "lakehouse", "kafka", "data-quality", "sli"]
+dependencies = []
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+lakehouse-demo = "lakehouse_platform.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
